@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block style %}
+.maindiv{border:2px solid black;
+margin:120px;
+height:500px;
+}
+.div1{
+<!--margin-bottom:200px;-->
+height:130px;
+background-color:SlateBlue;
+padding:50px;
+text-align:center;
+color:white;
+}
+#form1{
+padding-top:20px;
+padding-left:50px;
+
+}
+
+{% endblock %}
+{% block body %}
+
+    <div class="maindiv">
+        <div class="div1">
+            <h5><b>Register in Hospital</b></h5>
+        </div>
+        <div id="form1">
+            <form method="POST">
+		{% csrf_token %}
+				<div class="row">
+					<div class="col">
+		<input type="text" name="f_name" id="f_name" placeholder="First name" size="70">
+
+					</div>
+						<div class="col">
+		<input type="text" name="LAST_NAME" placeholder="Last name" size="70">
+		<br><br>
+							</div>
+				</div>
+					<div class="row">
+						<div class="col">
+
+                <input type="text" name="USERNAME" placeholder="username" size="70">
+
+						</div>
+						<div class="col">
+		<input type="password" name="PASSWORD" placeholder="password" size="70">
+		<br><br>
+						</div>
+					</div>
+				<div class="row">
+					<div class="col">
+
+						<select class="form-select" name="department" id="dropdown">
+							<option  name="department" selected>Department</option>
+  							<option name="department" value="Emergency Medicine" >Emergency Medicine</option>
+  							<option name="department" value="Gynaecology">Gynaecology</option>
+  							<option name="department" value="Pediatrics">Pediatrics</option>
+						</select><br>
+
+					</div>
+					<div class="col">
+						<input type="text" name="Mobile" placeholder="mobile" size="70">
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<input type="text" name="Address" placeholder="Address" size="70">
+					</div>
+					<div class="col">
+						<div class="input-group">
+  							<input type="file" id="file" name="photo" size="70">
+
+						</div>
+					</div>
+				</div><br>
+				<div style="text-align:center;" class="row">
+					<div class="col">
+		<input type="submit" name="submit" value="Submit"><br><br>
+						</div>
+					</div>
+				<div class="row">
+					<div class="col">
+					<h6 style="text-align:center;">Already have an account?? <a href="{% url 'admin_login' %}" target="_blank">Login here </a> </h6>
+						</div>
+				</div>
+	</form>
+
+
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block style %}
+.maindiv{text-align:center;
+<!--background-color:LightGray;-->
+
+}
+{% endblock %}
+{% block body %}
+<div>
+    <div>
+        <h2 style="text-align:center;">HELLO ADMIN..</h2>
+        <h5 style="text-align:center;">Welcome to Hospital Management System.</h5><br><br>
+        <div class="maindiv">
+            <h5>You can access various features after Login/SignUp </h5>
+
+
+        <a class="btn btn-primary" href="{% url 'admin_login' %}" role="button">Login</a>
+
+
+        <a class="btn btn-primary" href="{% url 'admin_signup' %}" role="button">SignUP</a>
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock %}

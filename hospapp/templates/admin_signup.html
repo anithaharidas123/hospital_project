@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block style %}
+.maindiv{border:2px solid black;
+margin:120px;
+height:500px;
+}
+.div1{
+<!--margin-bottom:200px;-->
+height:130px;
+background-color:SlateBlue;
+padding:50px;
+text-align:center;
+color:white;
+}
+#form1{
+padding-top:50px;
+padding-left:50px;
+
+}
+
+{% endblock %}
+{% block body %}
+
+    <div class="maindiv">
+        <div class="div1">
+            <h5><b>Add New Admin To Hospital</b></h5>
+        </div>
+        <div id="form1">
+            <form method="POST">
+		{% csrf_token %}
+				<div class="row">
+					<div class="col">
+		<input type="text" name="f_name" id="f_name" placeholder="First name">
+
+					</div>
+						<div class="col">
+		<input type="text" name="LAST_NAME" placeholder="Last name">
+		<br><br>
+							</div>
+				</div>
+					<div class="row">
+						<div class="col">
+
+                <input type="text" name="USERNAME" placeholder="username">
+
+						</div>
+						<div class="col">
+		<input type="password" name="PASSWORD" placeholder="password">
+		<br><br>
+							</div>
+					</div>
+				<div style="text-align:center;" class="row">
+					<div class="col">
+		<input type="submit" name="submit" value="Submit"><br><br>
+						</div>
+					</div>
+				<div class="row">
+					<div class="col">
+					<h6 style="text-align:center;">Already have an account?? <a href="{% url 'admin_login' %}" target="_blank">Login here </a> </h6>
+						</div>
+				</div>
+	</form>
+
+
+        </div>
+
+    </div>
+
+{% endblock %}

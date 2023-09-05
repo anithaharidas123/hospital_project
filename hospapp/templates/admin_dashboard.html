@@ -1,0 +1,261 @@
+{% extends 'base2.html' %}
+{% block title %}{% endblock %}
+{% load static %}
+{% block style %}
+.maindiv{border:2px solid black;
+margin-left:1px;
+width:300px;
+height:670px;
+background-color: rgb(34, 139, 34);
+}
+.div1{border:2px green;
+margin-left:0.5px;
+width:20%px;
+height:250px;
+background-color: green
+}
+img{
+border-radius: 50%;
+width:100px;
+margin-left:70px;
+margin-top:20px;
+}
+.icon{padding-left:5px;
+}
+a{color:white;
+text-decoration:none;
+}
+.card{
+margin-top:100px;
+width:300px;
+height:150px;
+}
+#div4{
+border-radius:50%;
+background-color:white;
+padding:10px;
+color:orange;
+float:right;}
+#div5{border-radius:50%;
+background-color:white;
+padding:10px;
+color:green;
+float:right;
+}
+#div6{border-radius:50%;
+background-color:white;
+padding:10px;
+color:green;
+float:right;
+}
+{% endblock %}
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-3">
+        <div class="maindiv">
+            <div class="div1">
+                <img src="{% static 'images/admin.jpeg' %}" alt="My image"><br><br>
+                <h6 style="margin-left:100px;color:white;">Admin</h6><br>
+                {%  for i in data %}
+                <h3 style="margin-left:80px;color:white;">{{i.first_name}}</h3>
+                {% endfor %}
+            </div>
+            <div class="icon">
+                <a href="{% url 'admin_dash1' %}">
+                <h6><i class="fa fa-dashboard" style="font-size:24px; color:white;"></i> Dashboard </h6>
+                </a><br>
+                <a href="{% url 'doctor1' %}">
+                <h6><i class="fa fa-medkit" style="font-size:24px"></i> Doctor </h6>
+                </a><br>
+                <a href="{% url 'patient1' %}">
+                <h6><i class="material-icons" style="font-size:24px">&#xe7f0;</i> Patients </h6>
+                </a><br>
+                <a href="{% url 'appointment1' %}">
+                <h6><i class="fa fa-calendar" style="font-size:24px"></i> Appointments </h6>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% if admin_dash1 %}
+    <div class="col-sm-8">
+        <div >
+        <div class="row">
+            <div class="col">
+                <div style="background-color:red; " class="card">
+                    <div class="card-body">
+                        1
+                        <p><i id="div4" class="fa fa-user-md" style="font-size:48px"></i></p>
+                        <h5 class="card-title">Total Doctor</h5>
+                        <p class="card-text">Approval required: 1</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div style="background-color:orange;"class="card">
+                    <div class="card-body">
+                        1
+                        <p><i id="div5" style="font-size:48px" class="fa">&#xf007;</i> </p>
+                        <h5 class="card-title">Total Patient</h5>
+                        <p class="card-text">Wants to admit: 1</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div style="background-color:blue;" class="card">
+                    <div class="card-body">
+                        1
+                        <p><i id="div6" class="fa fa-calendar" style="font-size:48px"></i></p>
+                        <h5 class="card-title">Total Appointment </h5>
+                        <p class="card-text">Approve Appointments: 0</p>
+
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+
+{% if doctor1 %}
+
+<div class="col-sm-8">
+        <div >
+        <div class="row">
+            <div class="col">
+                <div style="background-color:BlueViolet; " class="card">
+                    <div class="card-body">
+                       <h4 class="card-title">Doctor Record</h4>
+                        <p><i id="div7" class="fa fa-user-md" style="font-size:48px"></i></p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div style="background-color:Aquamarine;" class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Register Doctor</h4>
+                        <p><i id="div8" class="fa fa-user-md" style="font-size:48px"></i></p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div style="background-color:Gold;" class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Approve Doctor </h4>
+                        <p><i id="div9" class="fa fa-check" style="font-size:24px;color:white"></i></p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div style="background-color:LightPink;" class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Doctor Specialisation </h4>
+                        <p><i id="div10" class="fa fa-user-md" style="font-size:48px"></i></p>
+
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+    {% if patient1 %}
+
+    <div class="col-sm-8">
+        <div >
+        <div class="row">
+            <div class="col">
+                <div style="background-color:BlueViolet; " class="card">
+                    <div class="card-body">
+                       <h4 class="card-title">Patient Record</h4>
+                        <p><i class="material-icons" style="font-size:48px">&#xe7ef;</i></p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div style="background-color:Aquamarine;" class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Admit Patient</h4>
+                        <p><i class="material-icons" style="font-size:48px">&#xe7f0;</i></p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div style="background-color:Gold;" class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Approve Patient </h4>
+                        <p><i id="div11" class="fa fa-check" style="font-size:24px;color:white"></i></p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div style="background-color:LightPink;" class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Discharge Patient </h4>
+                        <p><i class="material-icons" style="font-size:36px">domain</i></p>
+
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+    {% if appointment1 %}
+
+    <div class="col-sm-8">
+        <div >
+        <div class="row">
+            <div class="col">
+                <div style="background-color:BlueViolet; " class="card">
+                    <div class="card-body">
+                       <h4 class="card-title">View Appointment</h4>
+                        <p><i class="material-icons" style="font-size:48px">&#xe7ef;</i></p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div style="background-color:Aquamarine;" class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Book Appointment</h4>
+                        <p><i class="material-icons" style="font-size:48px">&#xe7f0;</i></p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div style="background-color:Gold;" class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Approve Appointment </h4>
+                        <p><i  class="fa fa-check" style="font-size:24px;color:white"></i></p>
+
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}
