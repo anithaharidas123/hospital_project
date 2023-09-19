@@ -48,6 +48,55 @@ padding:10px;
 color:green;
 float:right;
 }
+
+table, th, td {
+  border: 1px solid black;
+width:100%;
+}
+.head_div{
+margin-top:10px;
+background-color:SlateBlue;
+
+text-align:center;
+color:white;
+}
+.maindiv12{border:2px solid black;
+margin:120px;
+height:500px;
+}
+.div20{
+<!--margin-bottom:200px;-->
+height:130px;
+background-color:SlateBlue;
+padding:50px;
+text-align:center;
+color:white;
+}
+
+#form12{
+padding-top:20px;
+padding-left:50px;
+
+}
+#bill{
+border: 1px solid black;
+width:180px;
+height:670px;
+
+}
+#sym,#item{
+border: 1px solid black;
+width:100%;
+height:25px;
+background-color:LightGrey;
+}
+<!--#doc_name{-->
+<!--float:right;-->
+<!--}-->
+<!--.bill_maindiv{-->
+<!--float:right;-->
+<!--}-->
+
 {% endblock %}
 {% block body %}
 
@@ -126,7 +175,10 @@ float:right;
 <div class="col-sm-8">
         <div >
         <div class="row">
+
             <div class="col">
+                <a href="ad_drec">
+
                 <div style="background-color:BlueViolet; " class="card">
                     <div class="card-body">
                        <h4 class="card-title">Doctor Record</h4>
@@ -134,8 +186,12 @@ float:right;
 
                     </div>
                 </div>
+                </a>
+
             </div>
+
             <div class="col">
+                <a href="reg_doc">
                 <div style="background-color:Aquamarine;" class="card">
                     <div class="card-body">
                         <h4 class="card-title">Register Doctor</h4>
@@ -143,9 +199,11 @@ float:right;
 
                     </div>
                 </div>
+                    </a>
             </div>
 
             <div class="col">
+                <a href="{% url 'approve_doc1' %}" >
                 <div style="background-color:Gold;" class="card">
                     <div class="card-body">
                         <h4 class="card-title">Approve Doctor </h4>
@@ -153,8 +211,10 @@ float:right;
 
                     </div>
                 </div>
+                </a>
             </div>
             <div class="col">
+                <a href="d_spec">
                 <div style="background-color:LightPink;" class="card">
                     <div class="card-body">
                         <h4 class="card-title">Doctor Specialisation </h4>
@@ -162,6 +222,7 @@ float:right;
 
                     </div>
                 </div>
+                    </a>
             </div>
 
             </div>
@@ -169,12 +230,14 @@ float:right;
         </div>
     </div>
     {% endif %}
+
     {% if patient1 %}
 
     <div class="col-sm-8">
         <div >
         <div class="row">
             <div class="col">
+                <a href="patient_record2">
                 <div style="background-color:BlueViolet; " class="card">
                     <div class="card-body">
                        <h4 class="card-title">Patient Record</h4>
@@ -182,18 +245,24 @@ float:right;
 
                     </div>
                 </div>
+                    </a>
             </div>
             <div class="col">
+                <a href="admit_patient1">
                 <div style="background-color:Aquamarine;" class="card">
+
                     <div class="card-body">
                         <h4 class="card-title">Admit Patient</h4>
                         <p><i class="material-icons" style="font-size:48px">&#xe7f0;</i></p>
 
                     </div>
+
                 </div>
+                    </a>
             </div>
 
             <div class="col">
+                <a href="{% url 'approve_patient2' %}">
                 <div style="background-color:Gold;" class="card">
                     <div class="card-body">
                         <h4 class="card-title">Approve Patient </h4>
@@ -201,8 +270,10 @@ float:right;
 
                     </div>
                 </div>
+                    </a>
             </div>
             <div class="col">
+                <a href="discharge_admin">
                 <div style="background-color:LightPink;" class="card">
                     <div class="card-body">
                         <h4 class="card-title">Discharge Patient </h4>
@@ -210,6 +281,7 @@ float:right;
 
                     </div>
                 </div>
+                    </a>
             </div>
 
             </div>
@@ -242,6 +314,7 @@ float:right;
             </div>
 
             <div class="col">
+                <a href="approve_appointment2">
                 <div style="background-color:Gold;" class="card">
                     <div class="card-body">
                         <h4 class="card-title">Approve Appointment </h4>
@@ -249,13 +322,498 @@ float:right;
 
                     </div>
                 </div>
+                    </a>
             </div>
 
             </div>
+
 
         </div>
     </div>
     {% endif %}
+    {% if approve_doc1 %}
+    <div class="col">
+        <div>
+            <div class="head_div">
+                <h3>Doctors Applied For Registration.</h3>
+            </div>
+        <div>
+            <table>
+        <tr>
+            <th>Name</th>
+            <th>Profile</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th>Department</th>
+            <th>Approve</th>
+            <th>Reject</th>
+        </tr>
+        {% if approve_doc1 %}
+        {% for i in data2 %}
+        <tr>
+            <td>{{i.first_name}} {{i.last_name}}</td>
+            <td>{{i.File}}</td>
+            <td>{{i.MOBILE}}</td>
+            <td>{{i.ADDRESS }}</td>
+            <td>{{i.DEPARTMENT}}</td>
+            <td><a href="approve_tick{{i.id}} " ><button style="background-color:green;" type="button" class="btn btn-primary"><i style="font-size:10px;" class="fa">&#xf00c;</i> </button></a></td>
+            <td><a href="" ><button style="background-color:red;" type="button" class="btn btn-primary"><i style="font-size:10px" class="fa">&#xf00d;</i> </button></a></td>
+        </tr>
+
+        {% endfor %}
+        {% endif %}
+                </table>
+        </div><br>
+            <a href="doctor1"><<button style="text-align:center;" type="button" class="btn btn-primary">Back</button></a>
+
+        </div>
+    </div>
+    {% endif %}
+    {% if ad_drec %}
+    <div class="col">
+        <div>
+            <div class="head_div">
+                <h3>Doctors.</h3>
+            </div>
+        <div>
+            <table>
+        <tr>
+            <th>Name</th>
+            <th>Profile</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th>Department</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+                {% if ad_drec %}
+                {% for i in data2 %}
+        <tr>
+            <td>{{i.first_name}} {{i.last_name}}</td>
+            <td>{{i.File}}</td>
+            <td>{{i.MOBILE}}</td>
+            <td>{{i.ADDRESS }}</td>
+            <td>{{i.DEPARTMENT}}</td>
+            <td><a href=# ><button style="background-color:green;" type="button" class="btn btn-primary"><i style="font-size:10px;" class="fa">&#xf00c;</i> </button></a></td>
+            <td><a href=# ><button style="background-color:red;" type="button" class="btn btn-primary"><i style="font-size:10px" class="fa">&#xf00d;</i> </button></a></td>
+                {% endfor %}
+                {% endif %}
+        </tr>
+
+
+
+                </table>
+        </div>
+        </div><br>
+        <a href="doctor1"><<button style="text-align:center;" type="button" class="btn btn-primary">Back</button></a>
+    </div>
+    {% endif %}
+
+    {% if reg_doc %}
+    <div class="col">
+        <div class="maindiv12">
+            <div class="div20">
+                <h5><b>Add new Doctor To Hospital </b></h5>
+            </div>
+        <div id="form12">
+            <form method="POST">
+		{% csrf_token %}
+				<div class="row">
+					<div class="col">
+		                <input type="text" name="f_name" id="f_name" placeholder="First name" >
+
+					</div>
+						<div class="col">
+                            <input type="text" name="LAST_NAME" placeholder="Last name" ><br><br>
+                        </div>
+				</div>
+					<div class="row">
+						<div class="col">
+
+                            <input type="text" name="USERNAME" placeholder="username" >
+
+						</div>
+						<div class="col">
+		                    <input type="password" name="PASSWORD" placeholder="password" ><br><br>
+						</div>
+					</div>
+				    <div class="row">
+					    <div class="col">
+
+						<select class="form-select" name="department" id="dropdown">
+							<option  name="department" selected>Department</option>
+  							<option name="department" value="Emergency Medicine" >Emergency Medicine</option>
+  							<option name="department" value="Gynaecology">Gynaecology</option>
+  							<option name="department" value="Pediatrics">Pediatrics</option>
+						</select><br>
+
+					    </div>
+					    <div class="col">
+						    <input type="text" name="Mobile" placeholder="mobile" >
+
+					    </div>
+				    </div>
+                <div class="row">
+					<div class="col">
+						<input type="text" name="Address" placeholder="Address" >
+					</div>
+					<div class="col">
+						<div class="input-group">
+  							<input type="file" id="file" name="photo" >
+
+						</div>
+					</div>
+				</div><br>
+				<div style="text-align:center;" class="row">
+					<div class="col">
+		                    <input type="submit" name="submit" value="Submit"><br><br>
+						</div>
+                </div>
+
+	</form>
+
+
+
+        </div>
+
+     </div>
+
+
+    </div>
+    {% endif %}
+
+    {% if d_spec %}
+    <div class="col">
+        <div class="maindiv12">
+            <div class="div20">
+                <h5><b>Department & Doctors </b></h5>
+            </div>
+
+         <table>
+             <h4>Gynacology</h4>
+            <tr>
+                <th>Name</th>
+                <th>Mobile</th>
+            </tr>
+              {% if d_spec %}
+                {% for i in gynac %}
+             <tr>
+                 <td>{{i.first_name}} {{i.last_name}}</td>
+                 <td>{{i.MOBILE}}</td>
+                 {% endfor %}
+                 {% endif %}
+             </tr>
+
+
+
+         </table><br>
+            <table>
+                <h4>Emergency Medicine</h4>
+                <tr>
+                <th>Name</th>
+                <th>Mobile</th>
+                </tr>
+                {% if d_spec %}
+                {% for i in emergency %}
+                <tr>
+                    <td>{{i.first_name}} {{i.last_name}}</td>
+                    <td>{{i.MOBILE}}</td>
+                </tr>
+                {% endfor %}
+                 {% endif %}
+            </table><br>
+            <table>
+                <h4>Pediatrics</h4>
+                <tr>
+                <th>Name</th>
+                <th>Mobile</th>
+                </tr>
+                {% if d_spec %}
+                {% for i in pediat %}
+                <tr>
+                    <td>{{i.first_name}} {{i.last_name}}</td>
+                    <td>{{i.MOBILE}}</td>
+
+                </tr>
+                {% endfor %}
+                 {% endif %}
+
+            </table>
+        </div>
+
+    {% endif %}
+
+
+
+
+    {% if approve_appointment2 %}
+    <div class="col">
+
+        <div>
+            <div class="head_div">
+                <h3>Appointment Approvals Required.</h3>
+            </div>
+            <div>
+                <table>
+                <tr>
+                    <th>Doctor Name</th>
+                    <th>Patient Name</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Approve</th>
+                    <th>Reject</th>
+                </tr>
+                    {% if approve_appointment2 %}
+                    {% for i in data3 %}
+
+
+            <tr>
+
+                <td>{{i.Doctor_Department}}</td>
+                <td>{{i.Name}}</td>
+                <td>{{i.Description}}</td>
+                <td>{{i.Date}}</td>
+
+
+                <td><a href='appo_book_tick{{i.id}}'><button style="background-color:green;" type="button" class="btn btn-primary"><i style="font-size:10px;" class="fa">&#xf00c;</i> </button></a></td>
+                <td><a href='reject_book_icon{{i.id}}' ><button style="background-color:red;" type="button" class="btn btn-primary"><i style="font-size:10px" class="fa">&#xf00d;</i> </button></a></td>
+            </tr>
+                    {% endfor %}
+                    {% endif %}
+
+
+
+                </table>
+                </div>
+        </div>
 
 </div>
+
+
+
+    {% endif %}
+
+     {% if approve_patient2 %}
+        <div class="col">
+        <div>
+            <div class="head_div">
+                <h3>Patients Applied For Registration.</h3>
+            </div>
+        <div>
+            <table>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th>Doctor_department</th>
+            <th>Approve</th>
+            <th>Reject</th>
+        </tr>
+        {% if approve_patient2 %}
+        {% for i in data2 %}
+        <tr>
+            <td>{{i.firstname}} {{i.lastname}}</td>
+            <td>{{i.Date}}</td>
+            <td>{{i.MOBILE}}</td>
+            <td>{{i.ADDRESS }}</td>
+            <td>{{i.DOCTOR}} {{DEPARTMENT}}</td>
+            <td><a href='app_tick_pat{{i.id}}' ><button style="background-color:green;" type="button" class="btn btn-primary"><i style="font-size:10px;" class="fa">&#xf00c;</i> </button></a></td>
+            <td><a href='reject_icon_pat{{i.id}}' ><button style="background-color:red;" type="button" class="btn btn-primary"><i style="font-size:10px" class="fa">&#xf00d;</i> </button></a></td>
+        </tr>
+
+        {% endfor %}
+        {% endif %}
+                </table>
+        </div><br>
+        </div>
+        </div>
+
+        {% endif %}
+
+        {% if patient_record2 %}
+        <div class="col">
+        <div>
+            <div class="head_div">
+                <h3>Patients</h3>
+            </div>
+        <div>
+            <table>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Symptoms</th>
+            <th> MOBILE</th>
+            <th>ADDRESS</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        {% if patient_record2 %}
+        {% for i in data3 %}
+        <tr>
+            <td>{{i.firstname}} {{i.lastname}}</td>
+            <td>{{i.Date}}</td>
+            <td>{{i.Symptoms}}</td>
+            <td>{{i.MOBILE }}</td>
+            <td>{{i.ADDRESS}}</td>
+            <td><a href=# ><button style="background-color:green;" type="button" class="btn btn-primary"><i style="font-size:10px;" class="fa">&#xf044;</i> </button></a></td>
+            <td><a href=# ><button style="background-color:red;" type="button" class="btn btn-primary"><i style="font-size:10px" class="fa">&#xf014;</i> </button></a></td>
+        </tr>
+
+        {% endfor %}
+        {% endif %}
+                </table>
+        </div><br>
+        </div>
+        </div>
+
+        {% endif %}
+
+        {% if admit_patient1 %}
+        <div class="col">
+        <div>
+            <div class="head_div">
+                <h3>Patients for Admit </h3>
+            </div>
+        <div>
+            <table>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Symptoms</th>
+            <th> MOBILE</th>
+            <th>ADDRESS</th>
+            <th>Admit</th>
+
+        </tr>
+        {% if admit_patient1 %}
+        {% for i in data2 %}
+        <tr>
+            <td>{{i.Name}}</td>
+            <td>{{i.Date}}</td>
+            <td>{{i.Description}}</td>
+            <td>{{i.MOBILE }}</td>
+            <td>{{i.ADDRESS}}</td>
+            <td><a href='admit_tick_click{{i.id}}' ><button style="background-color:green;" type="button" class="btn btn-primary"><i style="font-size:10px;" class="fa">&#xf00c;</i> </button></a></td>
+
+        </tr>
+
+        {% endfor %}
+        {% endif %}
+                </table>
+        </div><br>
+        </div>
+        </div>
+
+
+
+        {% endif %}
+        {% if discharge_admin %}
+        <div id="bill" class="col">
+        <form method="POST">
+		{% csrf_token %}
+            <div  class="container mx-2">
+                <div class="row">
+                    <div class="col">
+                        <h2>Hospital Management </h2>
+                    </div>
+                    <div class="col">
+
+                    <div class="bill_maindiv">
+                        <label>Admit date :</label>
+                        <label>date</label><br>
+                        <label>Release date :</label>
+                        <label>date</label><br>
+                    </div>
+                        </div>
+                </div><br><br>
+                <div class="row">
+                    <div  class="col">
+                        <label>Patient Name :</label>
+                        <label>Name</label><br>
+                        <label>Patient Mobile :</label>
+                        <label>Mobile</label><br>
+                        <label>Patient Address :</label>
+                        <label>address</label><br>
+                    </div>
+                    <div id="doc_name" class="col">
+                        <label>Doctor Name :</label>
+                        <label>name</label><br>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div id="sym" class="col">
+                        <h6>Disease and Symptoms</h6>
+                    </div>
+                </div>
+                <div>pain</div>
+                <div id="item" class="row">
+                    <div class="col">
+                       <label>Item</label>
+                    </div>
+                    <div class="col">
+                        <label>Price</label>
+
+
+                    </div>
+                </div><br>
+
+
+                <div class="row">
+                    <div class="col">
+                        <label>Room charge(per day)</label>
+
+                    </div>
+                    <div class="col">
+                        <input type="text" id="fname" name="fname" placeholder="In Rupees">
+
+                    </div>
+                </div><br>
+                    <div class="row">
+                        <div class="col">
+                        <label>Doctor Fee </label>
+                        </div>
+                        <div class="col">
+                            <input type="text" id="lname" name="lname" placeholder="In Rupees">
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col">
+                            <label>Medicine Cost</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" id="pname" name="pname" placeholder="In Rupees">
+
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col">
+                            <label>Other Charge</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" id="mname" name="mname" placeholder="In Rupees">
+                        </div>
+                    </div><br>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <input type="submit" name="submit" value="Generate bill">
+                    </div>
+                </div>
+
+
+            </div>
+        </form>
+            </div>
+        {% endif %}
+
+
+
+
+
+
+</div>
+    </div>
+
+
 {% endblock %}

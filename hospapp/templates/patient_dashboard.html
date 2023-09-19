@@ -1,0 +1,313 @@
+{% extends 'base2.html' %}
+{% block title %}{% endblock %}
+{% load static %}
+{% block style %}
+.maindiv{border:2px solid black;
+margin-left:1px;
+width:300px;
+height:670px;
+background-color: rgb(34, 139, 34);
+}
+.div1{border:2px green;
+margin-left:0.5px;
+width:20%px;
+height:250px;
+background-color: green
+}
+img{
+border-radius: 50%;
+width:100px;
+margin-left:70px;
+margin-top:20px;
+}
+.icon{padding-left:5px;
+}
+a{color:white;
+text-decoration:none;
+}
+.card{
+margin-top:100px;
+width:300px;
+height:150px;
+}
+#div4{
+border-radius:50%;
+background-color:white;
+padding:10px;
+color:orange;
+float:right;}
+#div5{
+border-radius:50%;
+background-color:white;
+padding:10px;
+color:green;
+float:right;}
+#div6{
+border-radius:50%;
+background-color:white;
+padding:10px;
+color:green;
+float:right;}
+#div7{
+border-radius:50%;
+background-color:white;
+padding:10px;
+color:green;
+float:right;}
+#div8{
+border-radius:50%;
+background-color:white;
+padding:10px;
+color:green;
+float:right;}
+#div9{
+border-radius:50%;
+background-color:white;
+padding:10px;
+color:green;
+float:right;}
+.book{
+height:80px;
+margin-top:10px;
+background-color:SlateBlue;
+padding:30px;
+text-align:center;
+color:white;
+}
+table, th, td {
+  border: 1px solid black;
+width:100%;
+}
+{% endblock %}
+{% block body%}
+{% if pat_log %}
+<div style="text-align:center;">
+    {%  for i in data %}
+                <h3 style="margin-left:80px;color:black;">Hello {{i.firstname}}</h3><br>
+                {% endfor %}
+    <p>Your Account is not approved till now </p><br><br>
+    <p>Our Team is checking your Profile</p><br><br>
+    <p>Soon your Account will be Confined...!!!</p><br><br>
+    <p>Check Later </p><br><br>
+    <a href="logout" ><button type="button" class="btn btn-primary">Log Out for Now </button></a>
+
+
+</div>
+    {% endif %}
+
+{% if pat_log_on %}
+<div class="row">
+    <div class="col-sm-3">
+        <div class="maindiv">
+            <div class="div1">
+                <img src="{% static 'images/patient_img.png' %}" alt="My image"><br><br>
+                <h6 style="margin-left:100px;color:white;">Patient</h6><br>
+                {%  for i in data %}
+                <h3 style="margin-left:80px;color:white;">{{i.firstname}}</h3>
+                {% endfor %}
+            </div>
+            <div class="icon">
+                <a href="patient_dash_main">
+                <h6><i class="fa fa-dashboard" style="font-size:24px;color:white;"></i> Dashboard </h6>
+                </a><br>
+                <a href="patient_appoi">
+                <h6><i class="fa fa-calendar" style="font-size:24px">&#xe7f0;</i> Appointments </h6>
+                </a><br>
+                <a href=#>
+                <h6><i class="material-icons" style="font-size:24px"></i> Discharge </h6>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {% if patient_dash_main %}
+
+        <div class="col-sm-8">
+
+                <div class="row">
+                    <div class="col">
+                        <div style="background-color:MediumSeaGreen; " class="card">
+
+                            <div class="card-body">
+
+                                <p><i id="div4" class="fa fa-check" style="font-size:35px;color:green;"></i></p>
+                                    {% for i in data2 %}
+                                <h5 class="card-title">{{i.first_name}}</h5>
+                                {% endfor %}
+                                <p class="card-text">Doctor Name </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div style="background-color:orange;"class="card">
+                            <div class="card-body">
+
+                                <p><i id="div5" style="font-size:35px" class="fa">&#xf05a;</i> </p>
+                                {% for i in data %}
+                                <h6 class="card-title">{{i.Symptoms}} </h6>
+                                {% endfor %}
+                                <h4 class="card-title">symptoms</h4>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div style="background-color:Violet;" class="card">
+                            <div class="card-body">
+
+                                <p><i id="div6" class="fa fa-mobile-phone" style="font-size:48px"></i></p>
+                                {% for i in data2 %}
+                                <h6 class="card-title">{{i.MOBILE}}</h6>
+                                {% endfor %}
+                                <h4 class="card-text">Doctor Mobile</h4>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div style="background-color:DodgerBlue;" class="card">
+                            <div class="card-body">
+
+                                <p><i id="div7" class="fa fa-map-marker" style="font-size:48px"></i></p>
+                                {% for i in data2 %}
+                                <h6 class="card-title">{{i.ADDRESS}}</h6>
+                                {% endfor %}
+                                <h4 class="card-text">Doctor Address</h4>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div style="background-color:Tomato;" class="card">
+                            <div class="card-body">
+
+                                <p><i id="div8" class="fa fa-calendar-check-o" style="font-size:48px"></i></p>
+                                {% for i in data2 %}
+                                <h5 class="card-title">{{i.DEPARTMENT}}</h5>
+                                {% endfor %}
+                                <h4 class="card-text">Doctor Department</h4>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div style="background-color:blue;" class="card">
+                            <div class="card-body">
+
+                                <p><i id="div9" class="fa fa-calendar" style="font-size:48px"></i></p>
+                                {% for i in data %}
+                                <h5 class="card-title">{{i.Date}}</h5>
+                                {% endfor %}
+                                <h4 class="card-text">Admit Date</h4>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        </div>
+
+    {% endif %}
+    {% if patient_appoi %}
+
+        <div class="col-sm-8">
+
+                <div class="row">
+                    <div class="col">
+                        <div style="background-color:MediumSeaGreen; " class="card">
+                            <a href="book_app">
+                            <div class="card-body">
+                                <p class="card-text"><b>View Your Appointment </b></p>
+                                <p><i id="div10" class="fa fa-calendar"  style="font-size:35px;color:white;"></i></p>
+
+
+
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <a href="book_appoi_pat">
+                        <div style="background-color:DodgerBlue; " class="card">
+                            <div class="card-body">
+                                    <p class="card-text"><b>Book Appointment </b></p>
+                                <p><i id="div11" class="fa fa-check" style="font-size:35px;color:white;"></i></p>
+
+
+                            </div>
+                        </div>
+                            </a>
+                    </div>
+
+                </div>
+        </div>
+    {% endif %}
+    {% if book_appoi_pat %}
+    <div class="col">
+        <div class="book">
+            <h4>Book Appointment Details </h4>
+        </div>
+        <form method="POST"  >
+		{% csrf_token %}
+        <div class="details">
+
+            <textarea placeholder="Description" id="freeform" name="freeform" rows="15" cols="146" >Description
+
+            </textarea>
+
+        </div>
+        <div class="descr">
+            <select class="form-select" name="doctor" id="dropdown">
+<!--							<option  name="doctor" selected>Department</option>-->
+  							<option name="doctor" value="doctor" >Doctor Name and Department</option>
+                                {% for i in data2 %}
+                                    <option name="doctor" value="{{i.USERNAME}}" >{{i.first_name}} {{i.DEPARTMENT}}</option>
+                                {% endfor %}
+						</select><br>
+            <a href="#"><button type="submit" class="btn btn-primary">Book</button></a>
+        </div>
+            </form>
+
+
+    </div>
+    {% endif %}
+    {% if book_app %}
+        <div class="col">
+        <div class="book">
+            <h4>Your Appointments </h4>
+        </div>
+            <div>
+            <table>
+        <tr>
+            <th>Doctor Name</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+        {% if book_app %}
+        {% for i in data2 %}
+        <tr>
+            <td>{{i.Doctor_Department}}</td>
+            <td>{{i.Description}}</td>
+            <td>{{i.Date}}</td>
+            <td>{{i.status}}</td>
+
+        </tr>
+
+        {% endfor %}
+        {% endif %}
+                </table>
+        </div>
+            </div>
+            {% endif %}
+
+
+
+
+
+</div>
+{% endif %}
+
+{% endblock %}

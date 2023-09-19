@@ -16,6 +16,7 @@ background-color: green
 }
 img{
 border-radius: 50%;
+
 width:100px;
 margin-left:70px;
 margin-top:20px;
@@ -53,8 +54,34 @@ padding:10px;
 color:green;
 float:right;
 }
+table, th, td {
+  border: 1px solid black;
+width:100%;
+}
+.head_div{
+margin-top:10px;
+background-color:SlateBlue;
+
+text-align:center;
+color:white;
+}
 {% endblock %}
 {% block body%}
+{% if doc_log %}
+<div style="text-align:center;">
+    {%  for i in data %}
+                <h3 style="margin-left:80px;color:black;">Hello {{i.first_name}}</h3><br>
+                {% endfor %}
+    <p>Your Account is not approved till now </p><br><br>
+    <p>Our Team is checking your Profile</p><br><br>
+    <p>Soon your Account will be Confined...!!!</p><br><br>
+    <p>Check Later </p><br><br>
+    <a href="default.asp" ><button type="button" class="btn btn-primary">Log Out for Now </button></a>
+
+
+</div>
+{% endif %}
+{% if doc_log_on %}
 <div class="row">
     <div class="col-sm-3">
         <div class="maindiv">
@@ -72,54 +99,53 @@ float:right;
                 <a href="{% url 'patient_dash1' %}">
                 <h6><i class="material-icons" style="font-size:24px">&#xe7f0;</i> Patients </h6>
                 </a><br>
-                <a href="{% url 'appointment1' %}">
+                <a href="{% url 'appo_dash1' %}">
                 <h6><i class="fa fa-calendar" style="font-size:24px"></i> Appointments </h6>
                 </a>
             </div>
         </div>
     </div>
     {% if doctor_dash1 %}
-    <div class="col-sm-8">
-        <div >
-        <div class="row">
-            <div class="col">
-                <div style="background-color:MediumSeaGreen; " class="card">
-                    <div class="card-body">
-                        1
-                        <p><i id="div4" class="fa fa-check" style="font-size:24px;color:green;"></i></p>
-                        <h5 class="card-title">Your patient discharged </h5>
-                        <p class="card-text">Approval required: 1</p>
 
+        <div class="col-sm-8">
+
+                <div class="row">
+                    <div class="col">
+                        <div style="background-color:MediumSeaGreen; " class="card">
+                            <div class="card-body">
+                                <h3></h3>
+                                <p><i id="div4" class="fa fa-check" style="font-size:24px;color:green;"></i></p>
+                                <h5 class="card-title">Your patient discharged </h5>
+                                <p class="card-text">Approval required: 1</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div style="background-color:orange;"class="card">
+                            <div class="card-body">
+                                <h3>{{data2}}</h3>
+                                <p><i id="div5" style="font-size:48px" class="fa">&#xf007;</i> </p>
+                                <h5 class="card-title">Patient Under you </h5>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div style="background-color:blue;" class="card">
+                            <div class="card-body">
+                                <h3>{{data3}}</h3>
+                                <p><i id="div6" class="fa fa-calendar" style="font-size:48px"></i></p>
+                                <h5 class="card-title">Appointment for you  </h5>
+                                <p class="card-text">Approve Appointments: {{data4}}</p>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <div style="background-color:orange;"class="card">
-                    <div class="card-body">
-                        1
-                        <p><i id="div5" style="font-size:48px" class="fa">&#xf007;</i> </p>
-                        <h5 class="card-title">Patient Under you </h5>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div style="background-color:blue;" class="card">
-                    <div class="card-body">
-                        1
-                        <p><i id="div6" class="fa fa-calendar" style="font-size:48px"></i></p>
-                        <h5 class="card-title">Appointment for you  </h5>
-                        <p class="card-text">Approve Appointments: 0</p>
-
-                    </div>
-                </div>
-            </div>
-
-            </div>
-
         </div>
-    </div>
+
     {% endif %}
     {% if patient_dash1 %}
 
@@ -128,6 +154,7 @@ float:right;
         <div >
         <div class="row">
             <div class="col">
+                <a href="Your_Patient_Record">
                 <div style="background-color:BlueViolet; " class="card">
                     <div class="card-body">
                        <h4 class="card-title">Your Patient Record </h4>
@@ -135,6 +162,7 @@ float:right;
 
                     </div>
                 </div>
+                    </a>
             </div>
             <div class="col">
                 <div style="background-color:Aquamarine;" class="card">
@@ -153,6 +181,168 @@ float:right;
         </div>
     </div>
     {% endif %}
+    {% if appo_dash1 %}
+    <div class="col-sm-8">
+        <div >
+        <div class="row">
+            <div class="col">
+                <a href="view_your_appointments">
+                <div style="background-color:BlueViolet; " class="card">
+                    <div class="card-body">
+
+                       <h4 class="card-title">View Your Appointments</h4>
+                        <p><i id="div07" class="fa fa-user-md" style="font-size:48px"></i></p>
+
+                    </div>
+                </div>
+                </a>
+            </div>
+            <div class="col">
+                <div style="background-color:Aquamarine;" class="card">
+                    <a href="delete_appointments">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Delete Appointments </h4>
+                        <p><i id="div08" class="fa fa-user-md" style="font-size:48px"></i></p>
+
+                    </div>
+                        </a>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+    {% endif %}
+    {% if Your_Patient_Record %}
+
+    <div class="col">
+
+        <div>
+            <div class="head_div">
+                <h3>Your Total Patient List </h3>
+            </div>
+            <div>
+                <table>
+                <tr>
+
+                    <th>Patient Name</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Mobile</th>
+                    <th>Address</th>
+                </tr>
+                    {% if Your_Patient_Record %}
+                    {% for i in data2 %}
+
+
+            <tr>
+
+                <td>{{i.firstname}} {{lastname}}</td>
+                <td>{{i.Symptoms}}</td>
+                <td>{{i.Date}}</td>
+                <td>{{i.MOBILE}}</td>
+                <td>{{i.ADDRESS}} </td>
+
+            </tr>
+                    {% endfor %}
+                    {% endif %}
+
+
+
+                </table>
+                </div>
+        </div>
 
 </div>
+    {% endif %}
+
+   {% if view_your_appointments %}
+    <div class="col">
+
+        <div>
+            <div class="head_div">
+                <h3>View Your Appointments </h3>
+            </div>
+            <div>
+                <table>
+                <tr>
+
+                    <th>Patient Name</th>
+                    <th>Description</th>
+                    <th>Appointment_Date</th>
+                    <th>Mobile</th>
+                    <th>Address</th>
+                </tr>
+                    {% if view_your_appointments %}
+                    {% for i in data2 %}
+
+
+            <tr>
+
+                <td>{{i.Name}}</td>
+                <td>{{i.Description}}</td>
+                <td>{{i.Date}}</td>
+                <td>{{i.MOBILE}}</td>
+                <td>{{i.ADDRESS}} </td>
+
+            </tr>
+                    {% endfor %}
+                    {% endif %}
+
+
+
+                </table>
+                </div>
+        </div>
+
+</div>
+    {% endif %}
+    {% if delete_appointments %}
+    <div class="col">
+
+        <div>
+            <div class="head_div">
+                <h3>Your Appointments </h3>
+            </div>
+            <div>
+                <table>
+                <tr>
+
+                    <th>Patient Name</th>
+                    <th>Description</th>
+
+                    <th>i/p</th>
+                    <th>o/p(delete)</th>
+                </tr>
+                    {% if delete_appointments %}
+                    {% for i in data2 %}
+
+
+            <tr>
+
+                <td>{{i.Name}}</td>
+                <td>{{i.Description}}</td>
+
+                <td>IP <br><a href='ip_button{{i.id}}' ><button style="background-color:green;" type="button" class="btn btn-primary"><i style="font-size:10px;" class="fa">&#xf0fe;</i> </button></a></td>
+                <td> OP(Delete)<br> <a href=# ><button style="background-color:green;" type="button" class="btn btn-primary"><i style="font-size:10px;" class="fa">&#xf0fe;</i> </button></a></td>
+
+            </tr>
+                    {% endfor %}
+                    {% endif %}
+
+
+
+                </table>
+                </div>
+        </div>
+
+</div>
+    {% endif %}
+
+
+
+</div>
+{% endif %}
 {% endblock %}

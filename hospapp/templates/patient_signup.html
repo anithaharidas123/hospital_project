@@ -53,11 +53,12 @@ padding-left:50px;
 				<div class="row">
 					<div class="col">
 
-						<select class="form-select" name="department" id="dropdown">
-							<option  name="department" selected>Department</option>
-  							<option name="department" value="Emergency Medicine" >Emergency Medicine</option>
-  							<option name="department" value="Gynaecology">Gynaecology</option>
-  							<option name="department" value="Pediatrics">Pediatrics</option>
+						<select class="form-select" name="doctor" id="dropdown1">
+
+							<option  name="doctor" selected>Doctor and Department</option>
+							{% for i in d %}
+  							<option name="doctor" value={{i.USERNAME}} > {{i.first_name}} {{i.last_name}}({{i.DEPARTMENT}})</option>
+						{% endfor %}
 						</select><br>
 
 					</div>
@@ -72,7 +73,7 @@ padding-left:50px;
 					</div>
 					<div class="col">
 						<div class="input-group">
-  							<input type="file" id="file" name="photo" size="70">
+  							<input type="text" name="Symptoms" placeholder="Symptoms" size="70">
 
 						</div>
 					</div>
@@ -84,14 +85,14 @@ padding-left:50px;
 					</div>
 				<div class="row">
 					<div class="col">
-					<h6 style="text-align:center;">Already have an account?? <a href="{% url 'doctor_login' %}" target="_blank">Login here </a> </h6>
+					<h6 style="text-align:center;">Already have an account?? <a href="{% url 'patient_login' %}" target="_blank">Login here </a> </h6>
 						</div>
 				</div>
 	</form>
 
 
         </div>
-
+9
     </div>
 
 {% endblock %}
