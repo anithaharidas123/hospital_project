@@ -273,6 +273,29 @@ background-color:LightGrey;
                     </a>
             </div>
             <div class="col">
+                <a href='admin_discharged_ip_card'>
+                <div style="background-color:Gold;" class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Discharge I/P Patients </h4>
+                        <p><i id="ip" class="fa fa-check" style="font-size:24px;color:white"></i></p>
+
+                    </div>
+                </div>
+                    </a>
+            </div>
+            <div class="col">
+                <a href='admin_discharged_op_card'>
+                <div style="background-color:Gold;" class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Discharge O/P Patients </h4>
+                        <p><i id="op" class="fa fa-check" style="font-size:24px;color:white"></i></p>
+
+                    </div>
+                </div>
+                    </a>
+            </div>
+
+            <div class="col">
                 <a href="discharge_admin">
                 <div style="background-color:LightPink;" class="card">
                     <div class="card-body">
@@ -617,7 +640,8 @@ background-color:LightGrey;
             <td>{{i.Date}}</td>
             <td>{{i.MOBILE}}</td>
             <td>{{i.ADDRESS }}</td>
-            <td>{{i.DOCTOR}} {{DEPARTMENT}}</td>
+
+            <td>{{name}} {{department}}</td>
             <td><a href='app_tick_pat{{i.id}}' ><button style="background-color:green;" type="button" class="btn btn-primary"><i style="font-size:10px;" class="fa">&#xf00c;</i> </button></a></td>
             <td><a href='reject_icon_pat{{i.id}}' ><button style="background-color:red;" type="button" class="btn btn-primary"><i style="font-size:10px" class="fa">&#xf00d;</i> </button></a></td>
         </tr>
@@ -708,6 +732,100 @@ background-color:LightGrey;
 
 
         {% endif %}
+        {% if admin_discharged_ip_card %}
+
+        <div class="col">
+        <div>
+            <div class="head_div">
+                <h3>Patients for Discharge </h3>
+            </div>
+        <div>
+            <table>
+        <tr>
+            <th>Patient_Name</th>
+
+            <th>Date</th>
+            <th>Symptoms</th>
+            <th> MOBILE</th>
+            <th>ADDRESS</th>
+            <th>Discharge</th>
+            <th>Doctor_Name</th>
+
+        </tr>
+        {% if admin_discharged_ip_card %}
+        {% for i in data2 %}
+        <tr>
+            <td>{{i.Name}}</td>
+            <td>{{i.Date}}</td>
+            <td>{{i.Description}}</td>
+            <td>{{i.MOBILE }}</td>
+            <td>{{i.ADDRESS}}</td>
+            <td><a href='admin_discharged_ip_icon{{i.id}}' ><button style="background-color:green;" type="button" class="btn btn-primary"><i style="font-size:10px;" class="fa">&#xf00c;</i> </button></a></td>
+            {% endfor %}
+            {% for i in data3 %}
+            <td>{{i.first_name}}</td>
+
+        </tr>
+
+        {% endfor %}
+        {% endif %}
+                </table>
+        </div><br>
+        </div>
+        </div>
+
+
+
+        {% endif %}
+
+        {% if admin_discharged_op_card %}
+
+        <div class="col">
+        <div>
+            <div class="head_div">
+                <h3>Patients for o/p Discharge </h3>
+            </div>
+        <div>
+            <table>
+        <tr>
+            <th>Patient_Name</th>
+
+            <th>Date</th>
+            <th>Symptoms</th>
+            <th> MOBILE</th>
+            <th>ADDRESS</th>
+            <th>Discharge</th>
+            <th>Doctor_Name</th>
+
+        </tr>
+        {% if admin_discharged_op_card %}
+        {% for i in data2 %}
+        <tr>
+            <td>{{i.Name}}</td>
+            <td>{{i.Date}}</td>
+            <td>{{i.Description}}</td>
+            <td>{{i.MOBILE }}</td>
+            <td>{{i.ADDRESS}}</td>
+            <td><a href='admin_discharged_ip_icon{{i.id}}' ><button style="background-color:green;" type="button" class="btn btn-primary"><i style="font-size:10px;" class="fa">&#xf00c;</i> </button></a></td>
+            {% endfor %}
+            {% for i in data3 %}
+            <td>{{i.first_name}}</td>
+
+        </tr>
+
+        {% endfor %}
+        {% endif %}
+                </table>
+        </div><br>
+        </div>
+        </div>
+
+
+
+        {% endif %}
+
+
+
         {% if discharge_admin %}
         <div id="bill" class="col">
         <form method="POST">
@@ -721,32 +839,55 @@ background-color:LightGrey;
 
                     <div class="bill_maindiv">
                         <label>Admit date :</label>
-                        <label>date</label><br>
+
+                        <label></label>
+
+                        <label>Days spent: </label>
+                        <label></label><br>
                         <label>Release date :</label>
-                        <label>date</label><br>
+                        <label></label><br>
                     </div>
                         </div>
                 </div><br><br>
                 <div class="row">
                     <div  class="col">
+                        {% for i in pat %}
                         <label>Patient Name :</label>
-                        <label>Name</label><br>
+
+
+                        <label>{{i.firstname}} {{i.lastname}}</label><br>
+
                         <label>Patient Mobile :</label>
-                        <label>Mobile</label><br>
+                        <label>{{i.MOBILE}}</label><br>
                         <label>Patient Address :</label>
-                        <label>address</label><br>
+                        <label>{{i.ADDRESS}}</label><br>
+
+                        {% endfor %}
                     </div>
                     <div id="doc_name" class="col">
                         <label>Doctor Name :</label>
-                        <label>name</label><br>
+                    {% for i in data3 %}
+                        <label>{{i.first_name}}</label><br>
+                    {% endfor %}
                     </div>
                 </div><br>
                 <div class="row">
+
                     <div id="sym" class="col">
                         <h6>Disease and Symptoms</h6>
                     </div>
                 </div>
-                <div>pain</div>
+
+                <div class="row">
+
+                    <div class="col">
+
+                        <h6>{{symptoms}}</h6>
+
+                    </div>
+
+                </div>
+                
                 <div id="item" class="row">
                     <div class="col">
                        <label>Item</label>
@@ -806,6 +947,133 @@ background-color:LightGrey;
         </form>
             </div>
         {% endif %}
+
+
+        {% if bill %}
+        <div id="bill1" class="col">
+
+            <div  class="container mx-2">
+                <div class="row">
+                    <div class="col">
+                        <h2>Hospital Management </h2>
+                    </div>
+                    <div class="col">
+
+                    <div class="bill_maindiv">
+                        <label>Admit date :</label>
+
+                        <label>{{date}}</label>
+
+                        <label>Days spent: </label>
+                        <label></label>
+                        <label>Release date :</label>
+                        <label>{{rel_date}}</label><br>
+                    </div>
+                        </div>
+                </div><br><br>
+                <div class="row">
+                    <div  class="col">
+                        {% for i in data3 %}
+                        <label>Patient Name :</label>
+                        <label>{{i.firstname}} {{i.lastname}}</label><br>
+                        <label>Patient Mobile :</label>
+                        <label>{{i.MOBILE}}</label><br>
+                        <label>Patient Address :</label>
+                        <label>{{i.ADDRESS}}</label><br>
+                        {% endfor %}
+                    </div>
+                    <div id="doc_name1" class="col">
+                        <label>Doctor Name :</label>
+                        {% for i in data4 %}
+                        <label>{{i.first_name}} {{i.last_name}}</label><br>
+                        {% endfor %}
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div id="sym1" class="col">
+                        <h6>Disease and Symptoms</h6>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col">
+                        <h6>{{symptoms}}</h6>
+                    </div>
+
+
+                </div>
+                <div id="item1" class="row">
+                    <div class="col">
+                       <label>Item</label>
+                    </div>
+                    <div class="col">
+                        <label>Price</label>
+
+
+                    </div>
+                </div><br>
+
+
+                <div class="row">
+                    <div class="col">
+                        <label>Room charge(per day)</label>
+
+                    </div>
+                    <div class="col">
+                        <label>{{room}}</label>
+                    </div>
+                </div><br>
+                    <div class="row">
+                        <div class="col">
+                        <label>Doctor Fee </label>
+                        </div>
+                        <div class="col">
+                            <label>{{doc}}</label>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col">
+                            <label>Medicine Cost</label>
+                        </div>
+                        <div class="col">
+                            <label>{{med}}</label>
+
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col">
+                            <label>Other Charge</label>
+                        </div>
+                        <div class="col">
+                            <label>{{other}}</label>
+
+                        </div>
+                    </div><br>
+                        <div class="row">
+                            <div class="col">
+
+                            </div>
+                            <div class="col">
+                                <label>Total</label>
+                                <label>{{Total}}</label>
+                            </div>
+
+                        </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col">
+
+                       <a href="bill_pdf{{data2.id}}"><button type="button" class="btn btn-success">Download Pdf </button></a>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            </div>
+        {% endif %}
+
 
 
 

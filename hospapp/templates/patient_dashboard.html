@@ -78,6 +78,14 @@ table, th, td {
   border: 1px solid black;
 width:100%;
 }
+#name{
+padding-top:50px;
+margin-top:50px;
+background-color:MediumSeaGreen;
+text-align:center;
+height:250px;
+width:200px;
+}
 {% endblock %}
 {% block body%}
 {% if pat_log %}
@@ -113,12 +121,24 @@ width:100%;
                 <a href="patient_appoi">
                 <h6><i class="fa fa-calendar" style="font-size:24px">&#xe7f0;</i> Appointments </h6>
                 </a><br>
-                <a href=#>
+
+                <a href='patient_dash_discharge'>
                 <h6><i class="material-icons" style="font-size:24px"></i> Discharge </h6>
                 </a>
+
             </div>
         </div>
     </div>
+<!--    <div id="name" class="col">-->
+<!--        <div>-->
+<!--            {% for i in data %}-->
+<!--            <h6>HELLO {{i.firstname}} {{i.lastname}}</h6>-->
+<!--            <h5>YOUR PATIENT ID IS {{i.patient_id}}</h5>-->
+
+<!--            {% endfor %}-->
+<!--        </div>-->
+
+<!--    </div>-->
 
     {% if patient_dash_main %}
 
@@ -258,6 +278,10 @@ width:100%;
             </textarea>
 
         </div>
+<!--            <div class="row">-->
+<!--                <div class="column"></div>-->
+<!--                -->
+<!--            </div>-->
         <div class="descr">
             <select class="form-select" name="doctor" id="dropdown">
 <!--							<option  name="doctor" selected>Department</option>-->
@@ -266,6 +290,7 @@ width:100%;
                                     <option name="doctor" value="{{i.USERNAME}}" >{{i.first_name}} {{i.DEPARTMENT}}</option>
                                 {% endfor %}
 						</select><br>
+
             <a href="#"><button type="submit" class="btn btn-primary">Book</button></a>
         </div>
             </form>
@@ -287,27 +312,188 @@ width:100%;
             <th>Status</th>
         </tr>
         {% if book_app %}
-        {% for i in data2 %}
+                {% for i in data3 %}
         <tr>
-            <td>{{i.Doctor_Department}}</td>
-            <td>{{i.Description}}</td>
-            <td>{{i.Date}}</td>
-            <td>{{i.status}}</td>
+
+            <td>{{i.first_name}}</td>
+            {% endfor %}
+
+            <td>{{Description}}</td>
+            <td>{{date}}</td>
+            <td>{{status}}</td>
 
         </tr>
 
-        {% endfor %}
+
         {% endif %}
                 </table>
         </div>
             </div>
             {% endif %}
+    {% if patient_dash_discharge %}
+    {% if display_msg_pat %}
+    <div class="col" style="text-align:center;">
+    {%  for i in data %}
+                <h3 style="margin-left:80px;color:black;">Hello {{i.firstname}}</h3><br>
+                {% endfor %}
+    <p>You are under treatment...  </p><br><br>
+    <p>Our Team will inform when you discharged</p><br><br>
 
+    <p>Check Later </p><br><br>
+    <a href="logout" ><button type="button" class="btn btn-primary">Log Out for Now </button></a>
+
+
+</div>
+
+
+    {% endif %}
+    {% if discharge_msg_pat %}
+    <div class="col">
+        <div id="bill1" class="col">
+
+            <div  class="container mx-2">
+                <div class="row">
+                    <div class="col">
+                        <h2>Hospital Management </h2>
+                    </div>
+                    <div class="col">
+
+                    <div class="bill_maindiv">
+                        <label>Admit date :</label>
+                    {% for i in data2 %}
+                        <label>{{i.Date}}</label>
+                        {% endfor %}
+
+                        <label>Days spent: </label>
+                        <label></label>
+
+                        <label>Release date :</label>
+                        {% for i in data3 %}
+                        <label>{{rel_date}}</label><br>
+                        {% endfor %}
+                    </div>
+                        </div>
+                </div><br><br>
+                <div class="row">
+                    <div  class="col">
+                        {% for i in data %}
+                        <label>Patient Name :</label>
+                        <label>{{i.firstname}} {{i.lastname}}</label><br>
+                        <label>Patient Mobile :</label>
+                        <label>{{i.MOBILE}}</label><br>
+                        <label>Patient Address :</label>
+                        <label>{{i.ADDRESS}}</label><br>
+                        {% endfor %}
+                    </div>
+                    <div id="doc_name1" class="col">
+                        <label>Doctor Name :</label>
+                        {% for i in data4 %}
+                        <label>{{i.first_name}} {{i.last_name}}</label><br>
+                        {% endfor %}
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div id="sym1" class="col">
+                        <h6>Disease and Symptoms</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for i in data2 %}
+                    <div class="col">
+
+                        <h6>{{i.Description}}</h6>
+
+                    </div>
+                    {% endfor %}
+
+
+                </div>
+                <div id="item1" class="row">
+                    <div class="col">
+                       <label>Item</label>
+                    </div>
+                    <div class="col">
+                        <label>Price</label>
+
+
+                    </div>
+                </div><br>
+
+                {% for i in data3 %}
+                <div class="row">
+
+                    <div class="col">
+                        <label>Room charge(per day)</label>
+
+                    </div>
+                    <div class="col">
+                        <label>{{i.Room_charge}}</label>
+                    </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col">
+                        <label>Doctor Fee </label>
+                        </div>
+                        <div class="col">
+                            <label>{{i.Doc_fee}}</label>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col">
+                            <label>Medicine Cost</label>
+                        </div>
+                        <div class="col">
+                            <label>{{i.Medicine_cost}}</label>
+
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col">
+                            <label>Other Charge</label>
+                        </div>
+                        <div class="col">
+                            <label>{{i.Other_charge}}</label>
+
+                        </div>
+                    </div><br>
+                        <div class="row">
+                            <div class="col">
+
+                            </div>
+                            <div class="col">
+                                <label>Total</label>
+                                <label>{{i.Total_charge}}</label>
+                            </div>
+
+                        </div><br><br>
+                {% endfor %}
+
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col">
+
+                       <a href="patient_bill_pdf"><button type="button" class="btn btn-success">Download Pdf </button></a>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            </div>
+        {% endif %}
+
+    </div>
+    {% endif %}
+
+
+
+    {% endif %}
 
 
 
 
 </div>
-{% endif %}
+
 
 {% endblock %}

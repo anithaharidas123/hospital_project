@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bill</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js",></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <style>
+        .bill_maindiv{
+        float:right
+        }
+    </style>
+
+
+
+
+</head>
+<body>
+
+</body>
+<div id="bill1" class="col">
+
+            <div  class="container mx-2">
+                <div class="row">
+                    <div class="col">
+                        <h2>Hospital Management </h2>
+                    </div>
+                    <div class="col">
+
+                    <div class="bill_maindiv">
+                        <label>Admit date :</label>
+
+                        <label>{{ad_date}}</label>
+
+                        <label>Days spent: </label>
+                        <label></label>
+                        <label>Release date :</label>
+
+                        <label>{{release_date}}</label><br>
+
+                    </div>
+                        </div>
+                </div><br><br>
+                <div class="row">
+                    <div  class="col">
+                        {% for i in data4 %}
+                        <label>Patient Name :</label>
+                        <label>{{i.firstname}} {{i.lastname}}</label><br>
+                        <label>Patient Mobile :</label>
+                        <label>{{i.MOBILE}}</label><br>
+                        <label>Patient Address :</label>
+                        <label>{{i.ADDRESS}}</label><br>
+                        {% endfor %}
+                    </div>
+                    <div id="doc_name1" class="col">
+                        <label>Doctor Name :</label>
+
+                        <label>{{doc_name1 }}</label><br>
+
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div id="sym1" class="col">
+                        <h6>Disease and Symptoms</h6>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col">
+                        <h6>{{symptoms}}</h6>
+                    </div>
+
+
+                </div>
+                <div id="item1" class="row">
+                    <div class="col">
+                       <label>Item</label>
+                    </div>
+                    <div class="col">
+                        <label>Price</label>
+
+
+                    </div>
+                </div><br>
+
+
+                <div class="row">
+                    <div class="col">
+                        <label>Room charge(per day)</label>
+
+                    </div>
+                    <div class="col">
+                        <label>{{room}}</label>
+                    </div>
+                </div><br>
+                    <div class="row">
+                        <div class="col">
+                        <label>Doctor Fee </label>
+                        </div>
+                        <div class="col">
+                            <label>{{doc}}</label>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col">
+                            <label>Medicine Cost</label>
+                        </div>
+                        <div class="col">
+                            <label>{{med}}</label>
+
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col">
+                            <label>Other Charge</label>
+                        </div>
+                        <div class="col">
+                            <label>{{other}}</label>
+
+                        </div>
+                    </div><br>
+                        <div class="row">
+                            <div class="col">
+
+                            </div>
+                            <div class="col">
+                                <label>Total</label>
+                                <label>{{total}}</label>
+                            </div>
+
+                        </div>
+<!--                <div class="row">-->
+<!--                    <div class="col"></div>-->
+<!--                    <div class="col">-->
+
+<!--                       <a href="bill_pdf{{data2.id}}"><button type="button" class="btn btn-success">Download Pdf </button></a>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+
+
+            </div>
+
+            </div>
+
+
+</html>

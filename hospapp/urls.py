@@ -52,6 +52,14 @@ urlpatterns = [
     path('admit_patient1',views.admit_patient1,name='admit_patient1'),
     path('admit_tick_click<int:id>',views.admit_tick_click,name='admit_tick_click'),
     path('discharge_admin',views.discharge_admin,name='discharge_admin'),
+    path('admin_discharged_ip_icon<int:id>',views.admin_discharged_ip_icon,name='admin_discharged_ip_icon'),
+    path('doctor_discharge_icon_ip<int:id>',views.doctor_discharge_icon_ip,name='doctor_discharge_icon_ip'),
+    path('admin_discharged_ip_card',views.admin_discharged_ip_card,name='admin_discharged_ip_card'),
+    path('patient_dash_discharge',views.patient_dash_discharge,name='patient_dash_discharge'),
+    path('bill_pdf<int:id>',views.bill_pdf,name='bill_pdf'),
+    path('patient_bill_pdf',views.patient_bill_pdf,name='patient_bill_pdf'),
+    path('op_button<int:id>',views.op_button,name='op_button'),
+    path('admin_discharged_op_card',views.admin_discharged_op_card,name='admin_discharged_op_card')
 
 
 

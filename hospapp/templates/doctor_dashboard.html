@@ -157,12 +157,24 @@ color:white;
                 <a href="Your_Patient_Record">
                 <div style="background-color:BlueViolet; " class="card">
                     <div class="card-body">
-                       <h4 class="card-title">Your Patient Record </h4>
+                       <h4 class="card-title">Your I/P Patient Record </h4>
                         <p><i id="div7" class="fa fa-user-md" style="font-size:48px"></i></p>
 
                     </div>
                 </div>
                     </a>
+            </div>
+            <div class="col">
+                <a href="Your_o/p_Patient_Record">
+                <div style="background-color:LightCoral; " class="card">
+                    <div class="card-body">
+                       <h4 class="card-title">Your O/P Patient Record </h4>
+                        <p><i id="divop" class="fa fa-user-md" style="font-size:48px"></i></p>
+
+                    </div>
+                </div>
+                    </a>
+
             </div>
             <div class="col">
                 <div style="background-color:Aquamarine;" class="card">
@@ -198,16 +210,18 @@ color:white;
                 </a>
             </div>
             <div class="col">
+                <a href="delete_appointments">
                 <div style="background-color:Aquamarine;" class="card">
-                    <a href="delete_appointments">
+
                     <div class="card-body">
 
                         <h4 class="card-title">Delete Appointments </h4>
                         <p><i id="div08" class="fa fa-user-md" style="font-size:48px"></i></p>
 
                     </div>
-                        </a>
+
                 </div>
+                     </a>
             </div>
         </div>
 
@@ -221,7 +235,7 @@ color:white;
 
         <div>
             <div class="head_div">
-                <h3>Your Total Patient List </h3>
+                <h3>Your I/P Patient List </h3>
             </div>
             <div>
                 <table>
@@ -232,18 +246,20 @@ color:white;
                     <th>Date</th>
                     <th>Mobile</th>
                     <th>Address</th>
+                    <th>Discharge</th>
                 </tr>
                     {% if Your_Patient_Record %}
-                    {% for i in data2 %}
+                    {% for i in data3 %}
 
 
             <tr>
 
-                <td>{{i.firstname}} {{lastname}}</td>
-                <td>{{i.Symptoms}}</td>
+                <td>{{i.Name}}</td>
+                <td>{{i.Description}}</td>
                 <td>{{i.Date}}</td>
                 <td>{{i.MOBILE}}</td>
                 <td>{{i.ADDRESS}} </td>
+                <td> <br><a href="doctor_discharge_icon_ip{{i.id}}" ><button style="background-color:green;" type="button" class="btn btn-primary"><i style="font-size:10px;" class="fa">&#xf0fe;</i> </button></a></td>
 
             </tr>
                     {% endfor %}
@@ -326,7 +342,7 @@ color:white;
                 <td>{{i.Description}}</td>
 
                 <td>IP <br><a href='ip_button{{i.id}}' ><button style="background-color:green;" type="button" class="btn btn-primary"><i style="font-size:10px;" class="fa">&#xf0fe;</i> </button></a></td>
-                <td> OP(Delete)<br> <a href=# ><button style="background-color:green;" type="button" class="btn btn-primary"><i style="font-size:10px;" class="fa">&#xf0fe;</i> </button></a></td>
+                <td> OP(Delete)<br> <a href='op_button{{i.id}}' ><button style="background-color:green;" type="button" class="btn btn-primary"><i style="font-size:10px;" class="fa">&#xf0fe;</i> </button></a></td>
 
             </tr>
                     {% endfor %}
